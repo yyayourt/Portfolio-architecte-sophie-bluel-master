@@ -1,0 +1,10 @@
+/*const btnValiderAjout = document.getElementById("btnValider");
+btnValiderAjout.addEventListener("click", ajoutProjet);
+
+function ajoutProjet(event) {
+   
+    const titleWork = document.querySelector(".labelTitle").value;
+    const categoryWork = document.getElementById("category").value;
+    const imageWork = document.getElementById("photo").files[0];
+
+/*** texte **/

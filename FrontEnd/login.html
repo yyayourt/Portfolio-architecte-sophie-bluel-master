@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sophie Bluel - Architecte d'intérieur</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="deaion" content="" />
+        <link rel="stylesheet" href="./assets/style.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">projets</a></li>
+                    <li>contact</li>
+                    <li>login</li>
+                    <li>
+                        <img
+                            src="./assets/icons/instagram.png"
+                            alt="Instagram"
+                        />
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <form class="formLogin" method="post">
+                <h2>Log In</h2>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" class="email" />
+                <div id="error-message"></div>
+                <label for="password">Mot de passe</label>
+                <input
+                    type="text"
+                    id="password"
+                    name="password"
+                    class="password"
+                />
+                <button id="btnLogin" class="btnLogin">Se connecter</button>
+                <a>mot de passe oublié</a>
+            </form>
+        </main>
+        <footer>
+            <nav>
+                <ul>
+                    <li>Mentions Légales</li>
+                </ul>
+            </nav>
+        </footer>
+        <script src="../Backend/assets/login.js"></script>
+        <script src="../Backend/assets/fonction.js"></script>
+        <script src="../Backend/assets/connexion.js"></script>
+    </body>
+</html>
