@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const iconeImg = document.querySelector(".inputPhoto i");
     const btnClose = document.getElementById("btnClose");
 
-    const addProjectForm = document.querySelector("#formulaireAjoutPhoto");
-    const uploadImageInput = document.querySelector("#fileInput");
-    const submitProjet = document.querySelector("#btnValider");
-    const projectUpload = document.querySelector("#previewImage");
+    const addProjectForm = document.getElementById("#formulaireAjoutPhoto");
+    const uploadImageInput = document.getElementById("#fileInput");
+    const submitProjet = document.getElementById("#btnValider");
+    const projectUpload = document.getElementById("#previewImage");
     fileInput.style.display = "none";
 
     openModalBtn.addEventListener("click", () => {
@@ -133,16 +133,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-    const authToken =
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4";
+
     // Fonctions pour ajouter des projets
     async function sendWorkData(data) {
         const postWorkUrl = "http://localhost:5678/api/works";
-
+        const token = recuperationToken();
         const response = await fetch(postWorkUrl, {
             method: "POST",
             headers: {
-                Authorization: authToken,
+                Authorization: `Bearer ${token}`,
             },
             body: data,
         });
@@ -174,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Envoyer les données et afficher la réponse
         try {
-            const response = await sendWorkData(formData, authToken);
+            const response = await sendWorkData(formData);
             console.log(response);
 
             const alert = document.getElementById("alert");
@@ -213,29 +212,4 @@ document.addEventListener("DOMContentLoaded", () => {
             projectUpload.appendChild(image);
         }
     }
-
-    /*const token = recuperationToken();
-        if (token) {
-            fetch("http://localhost:5678/api/works", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-                body: formData,
-            }).then((response) => {
-                response.json();
-                console.log(response);
-            });
-
-            .then((data) => {
-                    console.log("Photo ajoutée :", data);
-                    afficherProjets();
-                })
-                .catch((error) => {
-                    console.error(
-                        "Erreur lors de l'ajout de la photo :",
-                        error
-                    );
-                })
-        }*/
 });
