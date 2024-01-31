@@ -4,7 +4,6 @@ const modalContent = document.getElementById("modalContent");
 const modalPhoto = document.getElementById("modalPhoto");
 
 const btnRetour = document.getElementById("btnRetour");
-const fileInput = document.getElementById("fileInput");
 const previewImage = document.getElementById("previewImage");
 const labelPhoto = document.getElementById("btnImage");
 
@@ -17,7 +16,7 @@ const uploadImageInput = document.getElementById("fileInput");
 const submitProjet = document.getElementById("btnValider");
 const projectUpload = document.getElementById("previewImage");
 
-fileInput.style.display = "none";
+uploadImageInput.style.display = "none";
 
 //bouton pour ouvrir la modal
 openModalBtn.addEventListener("click", () => {
@@ -28,7 +27,6 @@ openModalBtn.addEventListener("click", () => {
 //modal inexistante tant que l'utilisateur est deconnecter
 if (!isConnected()) {
     openModalBtn.style.display = "none";
-    modalPhoto.style.display = "none";
 }
 
 //bouton pour revenir sur la modal content
@@ -149,13 +147,17 @@ function uploadImage() {
     }
 }
 
-//fonction pour supprimer l'affichage de tout les elements de inputPhoto pour afficher la photo
-fileInput.addEventListener("change", (event) => {
+// Ajout des événements pour gérer l'upload de photos
+uploadImageInput.addEventListener("change", function (event) {
+    // Appel de la fonction pour afficher l'aperçu de l'image
+    uploadImage();
+
+    //code pour masquer les éléments de l'interface et afficher l'aperçu de l'image
     const file = event.target.files[0];
     if (file) {
         iconeImg.style.display = "none";
         labelPhoto.style.display = "none";
-        fileInput.style.display = "none";
+        uploadImageInput.style.display = "none";
         span.style.display = "none";
         previewImage.src = URL.createObjectURL(file);
         previewImage.style.display = "block";
@@ -215,10 +217,5 @@ async function handleFormSubmit(event) {
         console.error("Erreur :", error);
     }
 }
-
-// Ajout des événements pour gérer l'upload de photos
-uploadImageInput.addEventListener("change", function () {
-    uploadImage();
-});
 
 addProjectForm.addEventListener("submit", handleFormSubmit);
