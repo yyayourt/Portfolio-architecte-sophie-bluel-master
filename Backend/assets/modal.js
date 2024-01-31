@@ -192,9 +192,9 @@ async function handleFormSubmit(event) {
 
     // Récupérer les valeurs du formulaire
 
-    const title = addProjectForm.querySelector("#titreInput").value;
-    const category = addProjectForm.querySelector("#categorieSelect").value;
-    const file = uploadImageInput.files[0];
+    const title = document.getElementById("titreInput").value;
+    const category = document.getElementById("categorieSelect").value;
+    const file = document.getElementById("fileInput").files[0];
 
     // Créer un objet FormData pour envoyer les données
     const formData = new FormData();
@@ -202,9 +202,19 @@ async function handleFormSubmit(event) {
     formData.append("category", category);
     formData.append("image", file);
 
+    const postWorkUrl = "http://localhost:5678/api/works";
+    const token = recuperationToken();
+    fetch(postWorkUrl, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+    }).then((reponse) => reponse.json());
+
     // Envoyer les données et afficher la réponse
-    try {
-        const response = await sendWorkData(formData);
+    /*try {
+        const response = sendWorkData(formData);
         console.log(response);
 
         const alert = document.getElementById("alert");
@@ -215,7 +225,7 @@ async function handleFormSubmit(event) {
         }, 5000);
     } catch (error) {
         console.error("Erreur :", error);
-    }
+    }*/
 }
 
 addProjectForm.addEventListener("submit", handleFormSubmit);

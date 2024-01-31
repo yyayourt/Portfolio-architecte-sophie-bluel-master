@@ -14,7 +14,7 @@ function getWorks() {
         });
 }
 
-// Fonction pour générer la réponse (afficher les œuvres)
+// Fonction pour générer les projets
 function genererReponse(works) {
     const gallery = document.getElementsByClassName("gallery")[0];
 
