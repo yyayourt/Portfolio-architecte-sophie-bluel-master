@@ -1,9 +1,11 @@
 getWorks();
 getCate();
 
+// Fonction pour récupérer les œuvres depuis l'API
 function getWorks() {
     const urlWorks = "http://localhost:5678/api/works";
 
+    // Effectue une requête GET pour récupérer les œuvres
     fetch(urlWorks)
         .then((res) => res.json())
         .then((data) => {
@@ -12,6 +14,7 @@ function getWorks() {
         });
 }
 
+// Fonction pour générer la réponse (afficher les œuvres)
 function genererReponse(works) {
     const gallery = document.getElementsByClassName("gallery")[0];
 
@@ -19,6 +22,7 @@ function genererReponse(works) {
 
     const fragment = document.createDocumentFragment();
 
+    // Parcours les œuvres et génère les éléments correspondants dans la galerie
     for (let i = 0; i < works.length; i++) {
         const article = works[i];
         const figureElement = document.createElement("figure");
@@ -37,6 +41,7 @@ function genererReponse(works) {
     gallery.appendChild(fragment);
 }
 
+// Fonction pour récupérer les catégories depuis l'API
 function getCate() {
     const urlCat = "http://localhost:5678/api/categories";
 
@@ -48,10 +53,12 @@ function getCate() {
         });
 }
 
+// Fonction pour filtrer les projets en fonction de la catégorie sélectionnée
 function filtre(categories) {
     const buttonsContainer = document.getElementById("buttonsContainer");
     buttonsContainer.innerHTML = "";
 
+    // Ajoute un bouton "Tous" pour afficher tous les projets
     const allButton = document.createElement("button");
     allButton.textContent = "Tous";
     allButton.addEventListener("click", function () {
@@ -60,6 +67,7 @@ function filtre(categories) {
     });
     buttonsContainer.appendChild(allButton);
 
+    // Parcours les catégories et crée des boutons correspondants pour filtrer les projets
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i];
         const button = document.createElement("button");
@@ -74,6 +82,8 @@ function filtre(categories) {
         buttonsContainer.appendChild(button);
     }
 }
+
+// Fonction pour supprimer toutes les classes "active" des boutons de catégorie
 function removeAllActiveClasses() {
     const buttons = document.querySelectorAll("#buttonsContainer button");
     buttons.forEach((button) => {
@@ -81,15 +91,18 @@ function removeAllActiveClasses() {
     });
 }
 
+// Fonction pour afficher les projets en fonction de la catégorie sélectionnée
 function afficherProjets(categorieId) {
     const works = JSON.parse(localStorage.getItem("worksedit"));
     let projectsToShow = works;
 
+    // Filtrer les projets en fonction de l'ID de la catégorie sélectionnée
     if (categorieId) {
         projectsToShow = works.filter(
             (work) => work.categoryId === categorieId
         );
     }
 
+    // Génère la réponse (affiche les projets filtrés)
     genererReponse(projectsToShow);
 }

@@ -45,16 +45,19 @@
                 <div id="error-message"></div>
                 <label for="password">Mot de passe</label>
                 <input
-                    type="text"
+                    type="password"
                     id="password"
                     name="password"
                     class="password"
                 />
-                <button id="btnLogin" class="btnLogin">Se connecter</button>
-                <a>mot de passe oublié</a>
+                <div class="bas">
+                    <h3 id="msgError">Email ou mot de passe incorrect</h3>
+                    <button id="btnLogin" class="btnLogin">Se connecter</button>
+                    <a>mot de passe oublié</a>
+                </div>
             </form>
         </main>
-        <footer>
+        <footer class="footerLog">
             <nav>
                 <ul>
                     <li>Mentions Légales</li>

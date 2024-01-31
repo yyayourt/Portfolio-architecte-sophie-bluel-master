@@ -34,7 +34,6 @@
                         <li>projets</li>
                         <li><a href="#contact">contact</a></li>
                         <li><a href="login.html" id="pageLogin">login</a></li>
-                        <!--li><a href="index.html" id="btnLogout">Log Out</a></li-->
                         <li>
                             <img
                                 src="./assets/icons/instagram.png"
@@ -95,48 +94,54 @@
                                 role="alert"
                             ></div>
                             <h3>Ajout photo</h3>
+
                             <form
                                 id="formulaireAjoutPhoto"
                                 enctype="multipart/form-data"
                                 method="post"
+                                class="formAjout"
                             >
-                                <div class="inputPhoto">
-                                    <img id="previewImage" src="" alt="" />
-                                    <i class="fa-regular fa-image"></i>
-                                    <label for="fileInput" id="btnImage"
-                                        >+ Ajouter photo</label
-                                    >
+                                <div class="formstyle">
+                                    <div class="inputPhoto">
+                                        <img id="previewImage" src="" alt="" />
+                                        <i class="fa-regular fa-image"></i>
+                                        <label for="fileInput" id="btnImage"
+                                            >+ Ajouter photo</label
+                                        >
+                                        <input
+                                            type="file"
+                                            id="fileInput"
+                                            name="fileInput"
+                                            accept="image/*"
+                                            required
+                                        />
+                                        <span>jpg, png : 4mo max</span>
+                                    </div>
+                                    <p>titre</p>
                                     <input
-                                        type="file"
-                                        id="fileInput"
-                                        name="fileInput"
-                                        accept="image/*"
+                                        type="text"
+                                        id="titreInput"
+                                        name="titreInput"
+                                        placeholder="Titre de la photo"
                                         required
                                     />
-                                    <span>jpg, png : 4mo max</span>
+                                    <p>catégorie</p>
+                                    <select
+                                        id="categorieSelect"
+                                        name="categorieSelect"
+                                        required
+                                    >
+                                        <option value="categorie1">
+                                            Objets
+                                        </option>
+                                        <option value="categorie2">
+                                            Appartements
+                                        </option>
+                                        <option value="categorie3">
+                                            Hotels & restaurants
+                                        </option>
+                                    </select>
                                 </div>
-                                <p>titre</p>
-                                <input
-                                    type="text"
-                                    id="titreInput"
-                                    name="titreInput"
-                                    placeholder="Titre de la photo"
-                                    required
-                                />
-                                <p>catégorie</p>
-                                <select
-                                    id="categorieSelect"
-                                    name="categorieSelect"
-                                    required
-                                >
-                                    <option value="categorie1">Objets</option>
-                                    <option value="categorie2">
-                                        Appartements
-                                    </option>
-                                    <option value="categorie3">
-                                        Hotels & restaurants
-                                    </option>
-                                </select>
                                 <div class="flexbtnValider">
                                     <button class="btnValider" id="btnValider">
                                         Valider
@@ -167,19 +172,17 @@
                     </form>
                 </section>
             </main>
-
-            <footer>
-                <nav>
-                    <ul>
-                        <li>Mentions Légales</li>
-                    </ul>
-                </nav>
-            </footer>
-            <script src="../Backend/assets/dev.js"></script>
-            <script src="../Backend/assets/modal.js"></script>
-            <script src="../Backend/assets/login.js"></script>
-            <script src="../Backend/assets/connexion.js"></script>
-            <script src="../Backend/assets/fonction.js"></script>
         </div>
+        <footer>
+            <nav>
+                <ul>
+                    <li>Mentions Légales</li>
+                </ul>
+            </nav>
+        </footer>
+        <script src="../Backend/assets/dev.js"></script>
+        <script src="../Backend/assets/connexion.js"></script>
+        <script src="../Backend/assets/fonction.js"></script>
     </body>
+    <script src="../Backend/assets/modal.js"></script>
 </html>

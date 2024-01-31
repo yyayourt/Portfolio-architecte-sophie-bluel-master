@@ -1,6 +1,8 @@
 const form = document.getElementsByClassName("formLogin")[0].elements;
 const loginUrl = "http://localhost:5678/api/users/login";
+const messageError = document.getElementById("msgError");
 
+//fonction pour verifier si les identifiants sont correct afin de ce connecter
 form["btnLogin"].addEventListener("click", function (event) {
     event.preventDefault();
 
@@ -23,9 +25,11 @@ form["btnLogin"].addEventListener("click", function (event) {
                 window.location = "index.html";
             } else {
                 console.log("error");
+                messageError.style.display = "flex";
             }
         })
         .catch((error) => {
             console.error("Error:", error);
+            messageError.style.display = "flex";
         });
 });
