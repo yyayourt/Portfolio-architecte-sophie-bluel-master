@@ -342,11 +342,15 @@ footer nav ul {
 
 /*page de login*/
 
+.headerLog {
+    margin: 50px 100px;
+}
+
 .formLogin {
     display: flex;
     flex-direction: column;
 
-    margin: 0px 37%;
+    margin: 0px 40%;
     gap: 15px;
 }
 
@@ -431,7 +435,6 @@ footer nav ul {
 
 .modalContent,
 .modalPhoto {
-    background-color: #fefefe;
     margin: 15% auto;
     border: 1px solid #888;
     width: 40%;

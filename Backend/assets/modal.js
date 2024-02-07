@@ -195,21 +195,6 @@ async function handleFormSubmit(event) {
         },
         body: formData,
     }).then((reponse) => reponse.json());
-
-    // Envoyer les données et afficher la réponse
-    /*try {
-        const response = sendWorkData(formData);
-        console.log(response);
-
-        const alert = document.getElementById("alert");
-        alert.innerHTML = "Votre photo a été ajouté avec succès";
-        alert.style.display = "block";
-        setTimeout(function () {
-            alert.style.display = "none";
-        }, 5000);
-    } catch (error) {
-        console.error("Erreur :", error);
-    }*/
 }
 
 addProjectForm.addEventListener("submit", handleFormSubmit);
