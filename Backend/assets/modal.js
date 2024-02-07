@@ -164,22 +164,6 @@ uploadImageInput.addEventListener("change", function (event) {
     }
 });
 
-// Fonctions pour ajouter des projets
-async function sendWorkData(data) {
-    const postWorkUrl = "http://localhost:5678/api/works";
-    const token = recuperationToken();
-    const response = await fetch(postWorkUrl, {
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    });
-
-    return response.json();
-}
-
 // Fonction pour gérer l'envoi du formulaire
 async function handleFormSubmit(event) {
     event.preventDefault();
