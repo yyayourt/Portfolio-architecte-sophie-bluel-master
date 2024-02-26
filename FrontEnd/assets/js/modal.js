@@ -137,16 +137,38 @@ ajouterPhotoButton.addEventListener("click", (event) => {
 });
 
 // Fonction pour afficher l'aperçu de l'image
+function attachChangeEvent() {
+    uploadImageInput.addEventListener("change", function (event) {
+        // Appel de la fonction pour afficher l'aperçu de l'image
+        uploadImage();
+
+        //code pour masquer les éléments de l'interface et afficher l'aperçu de l'image
+        const file = event.target.files[0];
+        if (file) {
+            iconeImg.style.display = "none";
+            labelPhoto.style.display = "none";
+            uploadImageInput.style.display = "none";
+            span.style.display = "none";
+            previewImage.src = URL.createObjectURL(file);
+            previewImage.style.display = "block";
+        }
+    });
+}
+
+function resetModal() {
+    // Remettre à zéro tous les éléments de la modal
+    iconeImg.style.display = "flex";
+    labelPhoto.style.display = "flex";
+    span.style.display = "flex";
+    previewImage.style.display = "none";
+    uploadImageInput.value = ""; // Réinitialiser l'input de l'image
+}
+
+// Fonction pour afficher l'aperçu de l'image
 function uploadImage() {
     if (uploadImageInput.files && uploadImageInput.files[0]) {
         const reader = new FileReader();
         const image = new Image();
-        const fileName = uploadImageInput.files[0].name;
-
-        reader.onload = (event) => {
-            image.src = event.target.result;
-            image.alt = fileName.split(".")[0];
-        };
 
         submitProjet.style.backgroundColor = "#1D6154";
         projectUpload.style.display = "block";
@@ -155,22 +177,8 @@ function uploadImage() {
     }
 }
 
-// Ajout des événements pour gérer l'upload de photos
-uploadImageInput.addEventListener("change", function (event) {
-    // Appel de la fonction pour afficher l'aperçu de l'image
-    uploadImage();
-
-    //code pour masquer les éléments de l'interface et afficher l'aperçu de l'image
-    const file = event.target.files[0];
-    if (file) {
-        iconeImg.style.display = "none";
-        labelPhoto.style.display = "none";
-        uploadImageInput.style.display = "none";
-        span.style.display = "none";
-        previewImage.src = URL.createObjectURL(file);
-        previewImage.style.display = "block";
-    }
-});
+// Attacher l'événement 'change' initialement
+attachChangeEvent();
 
 // Fonction pour gérer l'envoi du formulaire
 async function handleFormSubmit(event) {
@@ -209,20 +217,10 @@ async function handleFormSubmit(event) {
             // Vider la zone de texte du titre
             titleInput.value = "";
 
-            // Supprimer l'aperçu de l'image
-            const previewImage = document.getElementById("previewImage");
-            previewImage.parentNode.removeChild(previewImage);
+            resetModal();
 
-            // Créer un nouvel élément pour l'aperçu de l'image
-            const newPreviewImage = document.createElement("img");
-            newPreviewImage.id = "previewImage";
-            newPreviewImage.style.display = "none";
-            projectUpload.appendChild(newPreviewImage);
-
-            iconeImg.style.display = "flex";
-            labelPhoto.style.display = "flex";
-            span.style.display = "flex";
-            previewImage.style.display = "none";
+            // Attacher l'événement 'change' à nouveau
+            attachChangeEvent();
 
             // Mettre à jour les projets dans le localStorage (ou faire un appel à getWorks());
             // Générer les projets dans la modale et dans la page principale.
@@ -232,4 +230,4 @@ async function handleFormSubmit(event) {
         });
 }
 
-addProjectForm.addEventListener("submit", handleFormSubmit, () => {});
+addProjectForm.addEventListener("submit", handleFormSubmit);
