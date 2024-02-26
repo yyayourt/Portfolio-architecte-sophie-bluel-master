@@ -22,9 +22,7 @@
     </head>
     <body>
         <div class="banner" id="banner">
-            <button>
-                <i class="fa-solid fa-pen-to-square"></i> mode édition
-            </button>
+            <button><i class="fa-solid fa-pen-to-square"></i> mode édition</button>
         </div>
         <div class="contenu">
             <header>
@@ -35,10 +33,7 @@
                         <li><a href="#contact">contact</a></li>
                         <li><a href="login.html" id="pageLogin">login</a></li>
                         <li>
-                            <img
-                                src="./assets/icons/instagram.png"
-                                alt="Instagram"
-                            />
+                            <img src="./assets/icons/instagram.png" alt="Instagram" />
                         </li>
                     </ul>
                 </nav>
@@ -51,21 +46,16 @@
                     <article>
                         <h2>Designer d'espace</h2>
                         <p>
-                            Je raconte votre histoire, je valorise vos idées. Je
-                            vous accompagne de la conception à la livraison
-                            finale du chantier.
+                            Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la
+                            livraison finale du chantier.
                         </p>
                         <p>
-                            Chaque projet sera étudié en commun, de façon à
-                            mettre en valeur les volumes, les matières et les
-                            couleurs dans le respect de l’esprit des lieux et le
-                            choix adapté des matériaux. Le suivi du chantier
-                            sera assuré dans le souci du détail, le respect du
-                            planning et du budget.
+                            Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières
+                            et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le
+                            suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.
                         </p>
                         <p>
-                            En cas de besoin, une équipe pluridisciplinaire
-                            peut-être constituée : architecte DPLG,
+                            En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
                             décorateur(trice)
                         </p>
                     </article>
@@ -73,26 +63,17 @@
                 <section id="portfolio">
                     <div class="entete">
                         <h2>Mes Projets</h2>
-                        <button id="openModalBtn">
-                            <i class="fa-solid fa-pen-to-square"></i> modifier
-                        </button>
+                        <button id="openModalBtn"><i class="fa-solid fa-pen-to-square"></i> modifier</button>
                     </div>
                     <div id="myModal" class="modal">
                         <div id="modalContent" class="modalContent"></div>
 
                         <div id="modalPhoto" class="modalPhoto">
                             <span>
-                                <i
-                                    class="fa-solid fa-arrow-left"
-                                    id="btnRetour"
-                                ></i>
+                                <i class="fa-solid fa-arrow-left" id="btnRetour"></i>
                                 <i class="fa-solid fa-xmark" id="btnClose"></i>
                             </span>
-                            <div
-                                id="alert"
-                                class="alert alert-success"
-                                role="alert"
-                            ></div>
+                            <div id="alert" class="alert alert-success" role="alert"></div>
                             <h3>Ajout photo</h3>
 
                             <form
@@ -105,16 +86,8 @@
                                     <div class="inputPhoto">
                                         <img id="previewImage" src="" alt="" />
                                         <i class="fa-regular fa-image"></i>
-                                        <label for="fileInput" id="btnImage"
-                                            >+ Ajouter photo</label
-                                        >
-                                        <input
-                                            type="file"
-                                            id="fileInput"
-                                            name="fileInput"
-                                            accept="image/*"
-                                            required
-                                        />
+                                        <label for="fileInput" id="btnImage">+ Ajouter photo</label>
+                                        <input type="file" id="fileInput" name="fileInput" accept="image/*" required />
                                         <span>jpg, png : 4mo max</span>
                                     </div>
                                     <p>titre</p>
@@ -126,22 +99,14 @@
                                         required
                                     />
                                     <p>catégorie</p>
-                                    <select
-                                        id="categorieSelect"
-                                        name="categorieSelect"
-                                        required
-                                    >
+                                    <select id="categorieSelect" name="categorieSelect" required>
                                         <option value="1">Objets</option>
                                         <option value="2">Appartements</option>
-                                        <option value="3">
-                                            Hotels & restaurants
-                                        </option>
+                                        <option value="3">Hotels & restaurants</option>
                                     </select>
                                 </div>
                                 <div class="flexbtnValider">
-                                    <button class="btnValider" id="btnValider">
-                                        Valider
-                                    </button>
+                                    <button class="btnValider" id="btnValider">Valider</button>
                                 </div>
                             </form>
                         </div>
@@ -158,12 +123,7 @@
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" />
                         <label for="message">Message</label>
-                        <textarea
-                            name="message"
-                            id="message"
-                            cols="30"
-                            rows="10"
-                        ></textarea>
+                        <textarea name="message" id="message" cols="30" rows="10"></textarea>
                         <input type="submit" value="Envoyer" />
                     </form>
                 </section>
@@ -176,8 +136,8 @@
                 </ul>
             </nav>
         </footer>
-        <script src="../Backend/assets/dev.js"></script>
-        <script src="../Backend/assets/connexion.js"></script>
+        <script src="./assets/js/dev.js"></script>
+        <script src="./assets/js/connexion.js"></script>
     </body>
-    <script src="../Backend/assets/modal.js"></script>
+    <script src="./assets/js/modal.js"></script>
 </html>

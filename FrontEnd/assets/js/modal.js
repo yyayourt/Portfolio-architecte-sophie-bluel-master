@@ -19,7 +19,8 @@ const projectUpload = document.getElementById("previewImage");
 uploadImageInput.style.display = "none";
 
 //bouton pour ouvrir la modal
-openModalBtn.addEventListener("click", () => {
+openModalBtn.addEventListener("click", (event) => {
+    event.preventDefault();
     modal.style.display = "block";
     genererProjets();
 });
@@ -30,7 +31,8 @@ if (!isConnected()) {
 }
 
 //bouton pour revenir sur la modal content
-btnRetour.addEventListener("click", () => {
+btnRetour.addEventListener("click", (event) => {
+    event.preventDefault();
     modalPhoto.style.display = "none";
     modalContent.style.display = "flex";
 });
@@ -44,7 +46,8 @@ window.addEventListener("click", (event) => {
 });
 
 //bouton croix pour fermer la modal
-btnClose.addEventListener("click", () => {
+btnClose.addEventListener("click", (event) => {
+    event.preventDefault();
     modal.style.display = "none";
 });
 
@@ -104,10 +107,14 @@ function supprimerProjet(id) {
                 Authorization: `Bearer ${token}`,
             },
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Projet supprimé :", data);
+            // .then((response) => response.json()) // Pas besoin de récupérer la réponse car 204 No Content
+            .then(() => {
+                console.log("Projet supprimé avec succès");
+                // (Optionnel) Fermer la modale
+                // Mettre à jour les projets dans le localStorage (ou faire un appel à getWorks())
                 genererProjets();
+                getWorks();
+                modal.style.display = "none";
             })
             .catch((error) => {
                 console.error("Erreur lors de la suppression :", error);
@@ -123,7 +130,8 @@ ajouterPhotoButton.classList.add("ajouterPhoto");
 ajouterPhotoButton.innerText = "Ajouter une photo";
 
 // fonction pour afficher la modal photo a la place de la modal content
-ajouterPhotoButton.addEventListener("click", () => {
+ajouterPhotoButton.addEventListener("click", (event) => {
+    event.preventDefault();
     modalPhoto.style.display = "flex";
     modalContent.style.display = "none";
 });
@@ -175,10 +183,11 @@ async function handleFormSubmit(event) {
     }
 
     // Récupérer les valeurs du formulaire
-
-    const title = document.getElementById("titreInput").value;
+    const titleInput = document.getElementById("titreInput");
+    const title = titleInput.value;
     const category = document.getElementById("categorieSelect").value;
-    const file = document.getElementById("fileInput").files[0];
+    const fileInput = document.getElementById("fileInput");
+    const file = fileInput.files[0];
 
     // Créer un objet FormData pour envoyer les données
     const formData = new FormData();
@@ -194,7 +203,33 @@ async function handleFormSubmit(event) {
             Authorization: `Bearer ${token}`,
         },
         body: formData,
-    }).then((reponse) => reponse.json());
+    })
+        .then((response) => response.json())
+        .then(() => {
+            // Vider la zone de texte du titre
+            titleInput.value = "";
+
+            // Supprimer l'aperçu de l'image
+            const previewImage = document.getElementById("previewImage");
+            previewImage.parentNode.removeChild(previewImage);
+
+            // Créer un nouvel élément pour l'aperçu de l'image
+            const newPreviewImage = document.createElement("img");
+            newPreviewImage.id = "previewImage";
+            newPreviewImage.style.display = "none";
+            projectUpload.appendChild(newPreviewImage);
+
+            iconeImg.style.display = "flex";
+            labelPhoto.style.display = "flex";
+            span.style.display = "flex";
+            previewImage.style.display = "none";
+
+            // Mettre à jour les projets dans le localStorage (ou faire un appel à getWorks());
+            // Générer les projets dans la modale et dans la page principale.
+            genererProjets();
+            getWorks();
+            modal.style.display = "none";
+        });
 }
 
-addProjectForm.addEventListener("submit", handleFormSubmit);
+addProjectForm.addEventListener("submit", handleFormSubmit, () => {});

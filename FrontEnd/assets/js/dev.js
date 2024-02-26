@@ -98,9 +98,7 @@ function afficherProjets(categorieId) {
 
     // Filtrer les projets en fonction de l'ID de la catégorie sélectionnée
     if (categorieId) {
-        projectsToShow = works.filter(
-            (work) => work.categoryId === categorieId
-        );
+        projectsToShow = works.filter((work) => work.categoryId === categorieId);
     }
 
     // Génère la réponse (affiche les projets filtrés)
